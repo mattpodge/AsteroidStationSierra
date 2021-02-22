@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject laserBolt;
+    [SerializeField] float fireRate = 0.5f;
+
+    void Awake()
     {
-        
+        StartCoroutine(LaserFire());
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -21,8 +22,24 @@ public class PlayerController : MonoBehaviour
 
             if (i == 0)
             {
-                transform.LookAt(touchPosition, Vector3.forward);
+                ShipRotation(touchPosition);
             }
+        }
+
+    }
+
+    void ShipRotation(Vector3 inputPosition)
+    {
+        Vector3 lookDirection = transform.position - inputPosition;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
+    }
+
+    IEnumerator LaserFire()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(fireRate);
+            Instantiate(laserBolt, transform.position, transform.rotation);
         }
     }
 }
