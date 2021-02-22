@@ -47,7 +47,7 @@ public class SpawnManager : MonoBehaviour
                     Instantiate(asteroidPrefab, spawnPosition, transform.rotation);
                 }
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(Random.Range(0.5f, 2.5f));
         }
     }
 }

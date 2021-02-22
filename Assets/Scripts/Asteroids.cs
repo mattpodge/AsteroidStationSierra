@@ -6,16 +6,13 @@ public class Asteroids : MonoBehaviour
 {
 
     private Rigidbody2D asteroidRb;
-    private GameObject player;
-    [SerializeField] private ParticleSystem explosionEffect;
 
     // Start is called before the first frame update
     void Start()
     {
         asteroidRb = gameObject.GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
 
-        Vector3 target = (player.transform.position - transform.position).normalized;
+        Vector3 target = (Vector3.zero - transform.position).normalized;
         target.x += Random.Range(-0.5f, 0.5f);
         target.y += Random.Range(-0.5f, 0.5f);
 
@@ -25,21 +22,7 @@ public class Asteroids : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, Random.Range(-90.0f, 90.0f) * 1f * Time.deltaTime);
+        transform.Rotate(Vector3.forward, 360.0f * Random.Range(0.5f, 5.0f) * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Laser"))
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            Instantiate(explosionEffect, transform.position, transform.rotation);
-        }
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // destory player & game over
-        }
-    }
 }

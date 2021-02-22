@@ -7,6 +7,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject laserBolt;
     [SerializeField] float fireRate = 0.5f;
 
+    [SerializeField] ParticleSystem explosionEffect;
+
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     void Awake()
     {
         StartCoroutine(LaserFire());
@@ -40,6 +49,16 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForSeconds(fireRate);
             Instantiate(laserBolt, transform.position, transform.rotation);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            Destroy(gameObject);
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            gameManager.GameOver();
         }
     }
 }
