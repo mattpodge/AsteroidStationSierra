@@ -9,11 +9,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] ParticleSystem explosionEffect;
 
+    private AudioSource playerAudio;
+    [SerializeField] AudioClip pewPew;
+
     private GameManager gameManager;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerAudio = gameObject.GetComponent<AudioSource>();
     }
 
     void Awake()
@@ -49,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForSeconds(fireRate);
             Instantiate(laserBolt, transform.position, transform.rotation);
+            playerAudio.PlayOneShot(pewPew, 1.0f);
         }
     }
 
