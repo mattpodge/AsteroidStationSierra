@@ -22,7 +22,7 @@ public class Asteroids : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.forward, 360.0f * Random.Range(0.5f, 5.0f) * Time.deltaTime);
+        transform.Rotate(Vector3.forward, 90.0f * Random.Range(0.5f, 5.0f) * Time.deltaTime);
     }
 
 }

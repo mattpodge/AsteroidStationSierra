@@ -16,10 +16,14 @@ public class GameManager : MonoBehaviour
     private int score;
     private bool isGameActive;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void StartGame()
     {
-        Debug.Log("Button pressed!");
-
+        Debug.Log("Pressed");
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
 
         // isGameActive = true;
