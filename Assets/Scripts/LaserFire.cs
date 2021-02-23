@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class LaserFire : MonoBehaviour
 {
+    private GameManager gameManager;
 
     [SerializeField] float laserVelocity = 10.0f;
     [SerializeField] private ParticleSystem explosionEffect;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     void FixedUpdate()
     {
@@ -19,6 +25,7 @@ public class LaserFire : MonoBehaviour
         {
             Destroy(collison.gameObject);
             Destroy(gameObject);
+            gameManager.UpdateScore(10);
             Instantiate(explosionEffect, transform.position, transform.rotation);
         }
     }

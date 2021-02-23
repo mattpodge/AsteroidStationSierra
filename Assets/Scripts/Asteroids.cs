@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Asteroids : MonoBehaviour
 {
-
     private Rigidbody2D asteroidRb;
 
     // Start is called before the first frame update
@@ -24,5 +23,4 @@ public class Asteroids : MonoBehaviour
     {
         transform.Rotate(Vector3.forward, 90.0f * Random.Range(0.5f, 5.0f) * Time.deltaTime);
     }
-
 }

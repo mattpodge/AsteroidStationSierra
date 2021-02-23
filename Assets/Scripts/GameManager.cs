@@ -2,46 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
+    public int currentScore;
+    public bool isGameActive;
+
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-    public Button restartButton;
-    public Button startGameButton;
+    public GameObject gameOverScreen;
 
-    private int score;
-    private bool isGameActive;
-
-    private void Awake()
+    private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void StartGame()
-    {
-        Debug.Log("Pressed");
-        SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
-
-        // isGameActive = true;
-        //score = 0;
-        //UpdateScore(0);
-
+        currentScore = 0;
+        UpdateScore(currentScore);
+        isGameActive = true;
     }
 
     public void UpdateScore(int scoreToAdd)
     {
-        score += scoreToAdd;
-        scoreText.text = "Score: " + score;
+        currentScore += scoreToAdd;
+        scoreText.text = "Score: " + currentScore;
     }
 
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
+        gameOverScreen.SetActive(true);
         isGameActive = false;
     }
 
@@ -49,12 +36,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    public void BackToTitleScreen()
-    {
-        SceneManager.LoadScene("TitleScreen", LoadSceneMode.Single);
-    }
-
-
-
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameManager gameManager;
+
     [SerializeField] GameObject laserBolt;
     [SerializeField] float fireRate = 0.5f;
 
@@ -11,8 +13,6 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource playerAudio;
     [SerializeField] AudioClip pewPew;
-
-    private GameManager gameManager;
 
     private void Start()
     {
