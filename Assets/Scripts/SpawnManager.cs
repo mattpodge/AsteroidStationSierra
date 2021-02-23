@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> spawnPoints;
-    [SerializeField] private GameObject asteroidPrefab;
+    [SerializeField] private List<GameObject> asteroidsPrefab;
 
     private Camera cam;
     private float camHeight;
@@ -35,16 +35,17 @@ public class SpawnManager : MonoBehaviour
         {
             Vector3 spawnPosition;
             int i = Random.Range(0, spawnPoints.Count);
+            int asteroid = Random.Range(0, asteroidsPrefab.Count);
 
                 if (spawnPoints[i].CompareTag("SpawnManY"))
                 {
                     spawnPosition = new Vector3(spawnPoints[i].transform.position.x, Random.Range(-rangeY, rangeY), 0.0f);
-                    Instantiate(asteroidPrefab, spawnPosition, transform.rotation);
+                    Instantiate(asteroidsPrefab[asteroid], spawnPosition, transform.rotation);
                 }
                 else if (spawnPoints[i].CompareTag("SpawnManX"))
                 {
                     spawnPosition = new Vector3(Random.Range(-rangeX, rangeX), spawnPoints[i].transform.position.y, 0.0f);
-                    Instantiate(asteroidPrefab, spawnPosition, transform.rotation);
+                    Instantiate(asteroidsPrefab[asteroid], spawnPosition, transform.rotation);
                 }
 
             yield return new WaitForSeconds(Random.Range(0.5f, 2.5f));
