@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Asteroids : MonoBehaviour
 {
+    private GameManager gameManager;
+
     private Rigidbody2D asteroidRb;
+    [SerializeField] private ParticleSystem explosionEffect;
 
     // Start is called before the first frame update
     void Start()
     {
         asteroidRb = gameObject.GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         Vector3 target = (Vector3.zero - transform.position).normalized;
         target.x += Random.Range(-0.5f, 0.5f);
@@ -22,5 +26,17 @@ public class Asteroids : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.forward, 90.0f * Random.Range(0.5f, 5.0f) * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            gameManager.UpdateScore(10);
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+        }
+
     }
 }

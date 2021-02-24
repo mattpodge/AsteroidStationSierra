@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    private GameManager gameManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         transform.Rotate(Vector3.forward, 360.0f * 0.5f * Time.deltaTime);
     }
@@ -22,7 +14,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            gameManager.shieldActive = false;
+            PowerUps.isShieldActive = false;
         }
     }
 }

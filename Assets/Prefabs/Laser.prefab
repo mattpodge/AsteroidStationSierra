@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserVelocity: 10
-  explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
-    type: 3}
 --- !u!61 &4309876428494699635
 BoxCollider2D:
   m_ObjectHideFlags: 0

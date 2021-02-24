@@ -6,31 +6,31 @@ public class PlayerController : MonoBehaviour
 {
     private GameManager gameManager;
 
-    [SerializeField] private GameObject laserBolt;
-    [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private GameObject laserSpawn;
+    [SerializeField] private GameObject laserFire;
+    [SerializeField] private float laserFireRate = 1.0f;
+
+    [SerializeField] private GameObject burstFire;
+    [SerializeField] private float burstFireRate = 1.0f;
+
+
+    [SerializeField] private GameObject gunSpawn;
 
     [SerializeField] ParticleSystem explosionEffect;
 
     private AudioSource playerAudio;
     [SerializeField] AudioClip pewPew;
 
-    [SerializeField] private GameObject shield;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerAudio = gameObject.GetComponent<AudioSource>();
-    }
 
-    void Awake()
-    {
         StartCoroutine(LaserFire());
     }
 
     void Update()
     {
-
         for (int i = 0; i < Input.touchCount; i++)
         {
 
@@ -40,15 +40,6 @@ public class PlayerController : MonoBehaviour
             {
                 ShipRotation(touchPosition);
             }
-        }
-
-        if (gameManager.shieldActive)
-        {
-            shield.SetActive(true);
-        }
-        else
-        {
-            shield.SetActive(false);
         }
 
     }
@@ -61,11 +52,21 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator LaserFire()
     {
-        while(true)
+        while (gameManager.isGameActive)
         {
-            yield return new WaitForSeconds(fireRate);
-            Instantiate(laserBolt, laserSpawn.transform.position, transform.rotation);
-            playerAudio.PlayOneShot(pewPew, fireRate);
+            while(!PowerUps.isBurstActive)
+            {
+                yield return new WaitForSeconds(laserFireRate);
+                Instantiate(laserFire, gunSpawn.transform.position, transform.rotation);
+                playerAudio.PlayOneShot(pewPew, laserFireRate);
+            }
+
+            while (PowerUps.isBurstActive)
+            {
+                yield return new WaitForSeconds(burstFireRate);
+                Instantiate(burstFire, gunSpawn.transform.position, transform.rotation);
+                playerAudio.PlayOneShot(pewPew, burstFireRate);
+            }
         }
     }
 

@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject gameOverScreen;
 
-    public bool shieldActive;
-
     private void Start()
     {
         currentScore = 0;
@@ -37,10 +35,5 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void ActivateShield()
-    {
-        shieldActive = true;
     }
 }
