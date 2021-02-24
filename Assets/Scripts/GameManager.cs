@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         currentScore += scoreToAdd;
-        scoreText.text = "Score: " + currentScore;
+        scoreText.text = "Score: " + currentScore.ToString("D6");
     }
 
     public void GameOver()
