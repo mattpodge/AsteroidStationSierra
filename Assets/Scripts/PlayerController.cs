@@ -6,13 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     private GameManager gameManager;
 
-    [SerializeField] GameObject laserBolt;
-    [SerializeField] float fireRate = 0.5f;
+    [SerializeField] private GameObject laserBolt;
+    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private GameObject laserSpawn;
 
     [SerializeField] ParticleSystem explosionEffect;
 
     private AudioSource playerAudio;
     [SerializeField] AudioClip pewPew;
+
+    [SerializeField] private GameObject shield;
 
     private void Start()
     {
@@ -39,6 +42,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (gameManager.shieldActive)
+        {
+            shield.SetActive(true);
+        }
+        else
+        {
+            shield.SetActive(false);
+        }
+
     }
 
     void ShipRotation(Vector3 inputPosition)
@@ -52,8 +64,8 @@ public class PlayerController : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(fireRate);
-            Instantiate(laserBolt, transform.position, transform.rotation);
-            playerAudio.PlayOneShot(pewPew, 1.0f);
+            Instantiate(laserBolt, laserSpawn.transform.position, transform.rotation);
+            playerAudio.PlayOneShot(pewPew, fireRate);
         }
     }
 
