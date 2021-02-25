@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(laserFireRate);
                 Instantiate(laserFire, gunSpawn.transform.position, transform.rotation);
                 playerAudio.PlayOneShot(pewPew, laserFireRate);
-                playerAnim.speed = laserFireRate;
+                playerAnim.speed = 1 / laserFireRate;
             }
 
             while (PowerUps.isBurstActive)
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(burstFireRate);
                 Instantiate(burstFire, gunSpawn.transform.position, transform.rotation);
                 playerAudio.PlayOneShot(pewPew, burstFireRate);
-                playerAnim.speed = burstFireRate;
+                playerAnim.speed = 1 / burstFireRate;
 
             }
         }
