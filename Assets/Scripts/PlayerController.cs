@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
     private AudioSource playerAudio;
     [SerializeField] AudioClip pewPew;
 
+    private Animator playerAnim;
+
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        playerAudio = gameObject.GetComponent<AudioSource>();
+        playerAudio = GetComponent<AudioSource>();
+        playerAnim = GetComponent<Animator>();
 
         StartCoroutine(LaserFire());
     }
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(laserFireRate);
                 Instantiate(laserFire, gunSpawn.transform.position, transform.rotation);
                 playerAudio.PlayOneShot(pewPew, laserFireRate);
+                playerAnim.speed = laserFireRate;
             }
 
             while (PowerUps.isBurstActive)
@@ -66,6 +70,8 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(burstFireRate);
                 Instantiate(burstFire, gunSpawn.transform.position, transform.rotation);
                 playerAudio.PlayOneShot(pewPew, burstFireRate);
+                playerAnim.speed = burstFireRate;
+
             }
         }
     }
