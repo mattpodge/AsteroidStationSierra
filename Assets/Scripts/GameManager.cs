@@ -12,8 +12,12 @@ public class GameManager : MonoBehaviour
     public int currentWave;
     public bool isGameActive;
 
+    public int highScore;
+    public int prevHighScore;
+
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI hiScoreText;
     public GameObject gameOverScreen;
     public GameObject powerUpsUI;
 
@@ -24,8 +28,15 @@ public class GameManager : MonoBehaviour
         currentWave = 0;
         isGameActive = true;
 
+        highScore = PlayerPrefs.GetInt("highScore", highScore);
+        prevHighScore = highScore;
+
         UpdateScore(currentScore);
         UpdateWave(currentWave);
+    }
+
+    private void Update()
+    {
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -41,9 +52,20 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        hiScoreText.text = "High Score: " + highScore.ToString("D6");
+
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            hiScoreText.text = "!! NEW High Score: " + highScore.ToString("D6") + " !!";
+        }
+
         gameOverScreen.SetActive(true);
         powerUpsUI.SetActive(false);
         isGameActive = false;
+
+        PlayerPrefs.SetInt("highScore", highScore);
+        PlayerPrefs.Save();
     }
 
     public void RestartGame()

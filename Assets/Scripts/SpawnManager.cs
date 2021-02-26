@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     private float rangeY;
 
     public int asteroidCount;
+    public int asteroidsActive;
     public int nextWave;
     private int minWaveTarget;
     private int maxWaveTarget;
@@ -53,6 +54,9 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
+
+        asteroidsActive = GameObject.FindGameObjectsWithTag("Asteroid").Length;
+
         int upgradeNum = minWaveTarget + maxWaveTarget;
 
         if (gm.asteroidsDestroyed == upgradeNum)
@@ -63,7 +67,7 @@ public class SpawnManager : MonoBehaviour
             maxWaveTarget = nextWave * 5;
             maxAsteroids += 5;
 
-            minDelay -= (gm.currentWave * 0.2f);
+            minDelay -= (gm.currentWave * 0.1f);
             maxDelay -= (gm.currentWave * 0.2f);
 
             gm.UpdateWave(gm.currentWave);
@@ -73,9 +77,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnAsteroids()
     {
-        int asteroidsActive;
-        asteroidsActive = GameObject.FindGameObjectsWithTag("Asteroid").Length;
-
+        
         while (asteroidsActive < maxAsteroids)
         {
             Vector3 spawnPosition;

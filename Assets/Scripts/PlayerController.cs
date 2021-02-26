@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem explosionEffect;
 
     private AudioSource playerAudio;
-    [SerializeField] AudioClip pewPew;
+    [SerializeField] AudioClip laserSound;
+    [SerializeField] AudioClip burstSound;
+    [SerializeField] AudioClip explosionSound;
 
     private Animator playerAnim;
 
@@ -35,14 +37,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         for (int i = 0; i < Input.touchCount; i++)
         {
-
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
-
-            
-
-            if (i == 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            if (i == 0)
             {
                 ShipRotation(touchPosition);
             }
@@ -64,7 +63,7 @@ public class PlayerController : MonoBehaviour
             {
                 yield return new WaitForSeconds(laserFireRate);
                 Instantiate(laserFire, gunSpawn.transform.position, transform.rotation);
-                playerAudio.PlayOneShot(pewPew, laserFireRate);
+                playerAudio.PlayOneShot(laserSound, 75.0f);
                 playerAnim.speed = 1 / laserFireRate;
             }
 
@@ -72,7 +71,7 @@ public class PlayerController : MonoBehaviour
             {
                 yield return new WaitForSeconds(burstFireRate);
                 Instantiate(burstFire, gunSpawn.transform.position, transform.rotation);
-                playerAudio.PlayOneShot(pewPew, burstFireRate);
+                playerAudio.PlayOneShot(burstSound, 75.0f);
                 playerAnim.speed = 1 / burstFireRate;
 
             }
@@ -83,8 +82,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(explosionSound, gameObject.transform.position, 1.0f);
             Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
             gameManager.GameOver();
         }
     }

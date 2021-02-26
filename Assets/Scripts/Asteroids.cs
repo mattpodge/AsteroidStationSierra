@@ -9,12 +9,18 @@ public class Asteroids : MonoBehaviour
     private Rigidbody2D asteroidRb;
     [SerializeField] private ParticleSystem explosionEffect;
 
+    private AudioSource asteroidAudio;
+    [SerializeField] private AudioClip explosionSound;
+
+
     private float randomRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        asteroidRb = gameObject.GetComponent<Rigidbody2D>();
+        asteroidRb = GetComponent<Rigidbody2D>();
+        asteroidAudio = GetComponent<AudioSource>();
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         Vector3 target = (Vector3.zero - transform.position).normalized;
@@ -37,11 +43,12 @@ public class Asteroids : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Laser"))
         {
+            AudioSource.PlayClipAtPoint(explosionSound, gameObject.transform.position, 1.0f);
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            Instantiate(explosionEffect, transform.position, transform.rotation);
             gameManager.UpdateScore(10);
             gameManager.asteroidsDestroyed += 1;
-            Instantiate(explosionEffect, transform.position, transform.rotation);
         }
 
     }

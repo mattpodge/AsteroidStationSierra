@@ -14,6 +14,9 @@ public class PowerUps : MonoBehaviour
     public Image shieldCooldownImg;
     public GameObject shieldPowerUp;
 
+    private AudioSource shieldAudio;
+    public AudioClip shieldStartUp;
+
     public static bool isBurstActive;
     public Button burstButton;
     public int burstCooldown = 30;
@@ -24,6 +27,8 @@ public class PowerUps : MonoBehaviour
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        shieldAudio = shieldPowerUp.GetComponent<AudioSource>();
 
         shieldButton.onClick.AddListener(ActivateShield);
         burstButton.onClick.AddListener(ActivateBurstFire);
@@ -51,6 +56,7 @@ public class PowerUps : MonoBehaviour
     public void ActivateShield()
     {
         isShieldActive = true;
+        AudioSource.PlayClipAtPoint(shieldStartUp, Vector3.zero, 1.0f);
         StartCoroutine(CoolDown(shieldButton, shieldCooldownImg, shieldCooldown));
     }
 
