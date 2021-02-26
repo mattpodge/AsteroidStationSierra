@@ -35,13 +35,16 @@ public class PowerUps : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isShieldActive)
+        if (gm.isGameActive)
         {
-            shieldPowerUp.SetActive(true);
-        }
-        else
-        {
-            shieldPowerUp.SetActive(false);
+            if (isShieldActive)
+            {
+                shieldPowerUp.SetActive(true);
+            }
+            else
+            {
+                shieldPowerUp.SetActive(false);
+            }
         }
     }
 
@@ -79,7 +82,7 @@ public class PowerUps : MonoBehaviour
     {
         float timeLeft = 0;
         coolDownImage.fillAmount = 0;
-        powerUpButton.enabled = false;
+        powerUpButton.interactable = false;
 
         while (timeLeft < 1f && gm.isGameActive)
         {
@@ -88,7 +91,7 @@ public class PowerUps : MonoBehaviour
             yield return null;
         }
 
-        powerUpButton.enabled = true;
+        powerUpButton.interactable = true;
         coolDownImage.fillAmount = 1;
 
     }

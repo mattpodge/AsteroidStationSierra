@@ -10,4 +10,9 @@ public class TitleManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

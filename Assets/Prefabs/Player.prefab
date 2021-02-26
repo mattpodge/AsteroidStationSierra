@@ -146,6 +146,7 @@ Transform:
   - {fileID: 9138112597503934959}
   - {fileID: 9138112597687248918}
   - {fileID: 321988273060048018}
+  - {fileID: 8246923074506758029}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -180,14 +181,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2ebbcb834163046aea3fdc58daf231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserBolt: {fileID: 1189876710884237165, guid: 5f6b3f4131c3e9d448cab97278537480,
+  laserFire: {fileID: 1189876710884237165, guid: 5f6b3f4131c3e9d448cab97278537480,
     type: 3}
-  fireRate: 1
-  laserSpawn: {fileID: 4813798825526892726}
+  laserFireRate: 0.5
+  burstFire: {fileID: 4511452462155951346, guid: 3ca5a3d743870664fafe5283bb30e533,
+    type: 3}
+  burstFireRate: 1
+  gunSpawn: {fileID: 4813798825526892726}
   explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
     type: 3}
   pewPew: {fileID: 8300000, guid: 949a96343bb444140918a18521c1e380, type: 3}
-  shield: {fileID: 0}
 --- !u!82 &7076888392994065547
 AudioSource:
   m_ObjectHideFlags: 0
@@ -200,7 +203,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -474,3 +477,78 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &9138112596034803214
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9138112596816812015}
+    m_Modifications:
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957071, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_Name
+      value: Shield
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 471bc67fff9e7ff4faec0ebdd81e7418, type: 3}
+--- !u!4 &8246923074506758029 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+    type: 3}
+  m_PrefabInstance: {fileID: 9138112596034803214}
+  m_PrefabAsset: {fileID: 0}

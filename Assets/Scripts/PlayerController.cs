@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -39,7 +40,9 @@ public class PlayerController : MonoBehaviour
 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
 
-            if (i == 0)
+            
+
+            if (i == 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {
                 ShipRotation(touchPosition);
             }
