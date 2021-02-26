@@ -6,9 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+
+    public GameObject creditsOverlay;
+
     public void StartGame()
     {
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+    }
+
+    public void ShowCredits()
+    {
+        if (!creditsOverlay.activeInHierarchy)
+        {
+            creditsOverlay.SetActive(true);
+        } else
+        {
+            creditsOverlay.SetActive(false);
+        }
     }
 
     public void ExitGame()
