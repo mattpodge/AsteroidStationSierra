@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnAsteroids());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         asteroidsActive = GameObject.FindGameObjectsWithTag("Asteroid").Length;

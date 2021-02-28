@@ -16,13 +16,12 @@ public class TitleManager : MonoBehaviour
 
     public void ShowCredits()
     {
-        if (!creditsOverlay.activeInHierarchy)
-        {
-            creditsOverlay.SetActive(true);
-        } else
-        {
-            creditsOverlay.SetActive(false);
-        }
+        creditsOverlay.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        creditsOverlay.SetActive(false);
     }
 
     public void ExitGame()
