@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(explosionSound, gameObject.transform.position, 1.0f);
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
-            gameManager.GameOver();
         }
     }
 }
