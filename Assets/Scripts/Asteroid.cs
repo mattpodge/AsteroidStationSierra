@@ -38,7 +38,7 @@ public class Asteroid : MonoBehaviour
         transform.Rotate(Vector3.forward * randomAsteroidRotation * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Sensor"))
         {
