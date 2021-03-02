@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 412255235}
   m_Layer: 0
   m_Name: SpawnPointLeft
-  m_TagString: SpawnPtVert
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,14 +487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed9751b713ee7743a25fbca9b2c75d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWave: 1
+  asteroidCountIncrement: 5
+  minSpawnDelay: 1
+  maxSpawnDelay: 2
   lgAsteroids:
   - {fileID: 1940102883881821776, guid: cd530dbf846740b4499967a394ccbdbd, type: 3}
-  spawnPoints:
-  - {fileID: 1004860641}
-  - {fileID: 1927988210}
-  - {fileID: 412255234}
-  currentWave: 1
-  maxAsteroidCount: 5
 --- !u!1 &1004860641
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +504,7 @@ GameObject:
   - component: {fileID: 1004860642}
   m_Layer: 0
   m_Name: SpawnPointTop
-  m_TagString: SpawnPtHorz
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,7 +534,7 @@ GameObject:
   - component: {fileID: 1927988211}
   m_Layer: 0
   m_Name: SpawnPointRight
-  m_TagString: SpawnPtVert
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
