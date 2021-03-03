@@ -37,14 +37,12 @@ public class GameManager : MonoBehaviour
     {
         int upgradeTarget = currentScoreTarget + nextScoreTarget;
 
-        Debug.Log(currentScoreTarget + " + " + nextScoreTarget + " = " + upgradeTarget);
-
         if (asteroidsDestroyed.Value == upgradeTarget)
         {
+            Debug.Log("Next Wave");
             currentWave.ApplyChange(1);
             currentScoreTarget = upgradeTarget;
             nextScoreTarget = (currentWave.Value + 1) * 5;
-
             NewWave.Invoke();
         }
     }
