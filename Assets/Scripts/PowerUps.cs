@@ -40,8 +40,6 @@ public class PowerUps : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gm.isGameActive)
-        {
             if (isShieldActive)
             {
                 shieldPowerUp.SetActive(true);
@@ -50,7 +48,6 @@ public class PowerUps : MonoBehaviour
             {
                 shieldPowerUp.SetActive(false);
             }
-        }
     }
 
     public void ActivateShield()
@@ -90,7 +87,7 @@ public class PowerUps : MonoBehaviour
         coolDownImage.fillAmount = 0;
         powerUpButton.interactable = false;
 
-        while (timeLeft < 1f && gm.isGameActive)
+        while (timeLeft < 1f)
         {
             coolDownImage.fillAmount = timeLeft;
             timeLeft +=  (Time.deltaTime / cooldown);

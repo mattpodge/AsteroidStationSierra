@@ -5,7 +5,10 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public IntReference currentWave, waveIncrement;
-    public FloatReference minSpawnDelay, maxSpawnDelay;
+    public float minSpawnDelay, maxSpawnDelay;
+
+    private readonly float minSpawnDelayLimit = 0.125f;
+    private readonly int maxAsteroidsCountLimit = 40;
 
     public List<GameObject> lgAsteroids;
 
@@ -23,16 +26,31 @@ public class SpawnManager : MonoBehaviour
         SpawnPointTransforms();
         SensorTransforms();
         StartCoroutine(SpawnAsteroids());
+        IncreaseActiveSpawns();
     }
 
     private void Update()
     {
         // Count how many asteroids are currently active
         asteroidActiveCount = GameObject.FindGameObjectsWithTag("Asteroid").Length;
-
-        // Increase the max available asteroids with wave increase
-        maxAsteroidCount = currentWave * waveIncrement;
     }
+
+    public void IncreaseActiveSpawns()
+    {
+        if (maxAsteroidCount != maxAsteroidsCountLimit)
+        {
+            // Increase how many active spawns are allowed
+            maxAsteroidCount += waveIncrement.Value;
+        }
+
+        if (minSpawnDelay > minSpawnDelayLimit)
+        {
+            // Shorten the delay window between spawns
+            minSpawnDelay *= 0.875f;
+            maxSpawnDelay *= 0.875f;
+        }
+    }
+
 
     IEnumerator SpawnAsteroids()
     {
@@ -43,6 +61,7 @@ public class SpawnManager : MonoBehaviour
             float randomYPos = Random.Range(-ySpawnRange, ySpawnRange);
             int spawnIndex = Random.Range(0, spawnPoints.Length);
             int asteroidIndex = Random.Range(0, lgAsteroids.Count);
+
 
             // Spawn position is dependant on which spawn point is instantiating the asteroid
             Vector2 spawnPos = (

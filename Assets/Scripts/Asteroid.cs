@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Asteroid : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Asteroid : MonoBehaviour
     private Vector3 target = Vector3.zero;
     [Range(0f, 5f)]
     public float errorWindow = 0;
+
+    public UnityEvent AsteroidShot;
 
     void Start()
     {
@@ -43,6 +46,14 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Sensor"))
         {
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            AsteroidShot.Invoke();
+
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }

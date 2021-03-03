@@ -1,80 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    public bool resetScore;
+    public FloatVariable currentScore;
+    public IntVariable currentWave;
+    public IntVariable asteroidsDestroyed;
 
-    public int currentScore;
-    public int asteroidsDestroyed;
-    public int currentWave;
-    public bool isGameActive;
+    private int currentScoreTarget;
+    private int nextScoreTarget;
 
-    public int highScore;
-    public int prevHighScore;
-
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI waveText;
-    public TextMeshProUGUI hiScoreText;
-    public GameObject gameOverScreen;
-    public GameObject powerUpsUI;
+    public UnityEvent NewWave;
 
 
-    private void Start()
+    void Start()
     {
-        currentScore = 0;
-        currentWave = 0;
-        isGameActive = true;
-
-        highScore = PlayerPrefs.GetInt("highScore", highScore);
-        prevHighScore = highScore;
-
-        UpdateScore(currentScore);
-        UpdateWave(currentWave);
-    }
-
-    private void Update()
-    {
-    }
-
-    public void UpdateScore(int scoreToAdd)
-    {
-        currentScore += scoreToAdd;
-        scoreText.text = "Score: " + currentScore.ToString("D6");
-    }
-
-    public void UpdateWave(int currentWave)
-    {
-        waveText.text = "Wave: " + currentWave.ToString("D3");
-    }
-
-    public void GameOver()
-    {
-        hiScoreText.text = "High Score: " + highScore.ToString("D6");
-
-        if (currentScore > highScore)
+        if (resetScore)
         {
-            highScore = currentScore;
-            hiScoreText.text = "!! NEW High Score: " + highScore.ToString("D6") + " !!";
+            currentScore.SetValue(0);
+            currentWave.SetValue(0);
+            asteroidsDestroyed.SetValue(0);
         }
 
-        gameOverScreen.SetActive(true);
-        powerUpsUI.SetActive(false);
-        isGameActive = false;
-
-        PlayerPrefs.SetInt("highScore", highScore);
-        PlayerPrefs.Save();
+        currentScoreTarget = currentWave.Value * 5;
+        nextScoreTarget = (currentWave.Value + 1) * 5;
     }
 
-    public void RestartGame()
+    void Update()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void MainMenu()
+    public void UpdateWave()
     {
-        SceneManager.LoadScene(0);
+        int upgradeTarget = currentScoreTarget + nextScoreTarget;
+
+        Debug.Log(currentScoreTarget + " + " + nextScoreTarget + " = " + upgradeTarget);
+
+        if (asteroidsDestroyed.Value == upgradeTarget)
+        {
+            currentWave.ApplyChange(1);
+            currentScoreTarget = upgradeTarget;
+            nextScoreTarget = (currentWave.Value + 1) * 5;
+
+            NewWave.Invoke();
+        }
+    }
+
+    public void UpdateScore()
+    {
+        currentScore.ApplyChange(5);
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 321988273060048018}
   m_Layer: 0
-  m_Name: LaserSpawn
+  m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 468503745}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,18 +277,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2ebbcb834163046aea3fdc58daf231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserFire: {fileID: 1189876710884237165, guid: 5f6b3f4131c3e9d448cab97278537480,
-    type: 3}
-  laserFireRate: 0.5
-  burstFire: {fileID: 4511452462155951346, guid: 3ca5a3d743870664fafe5283bb30e533,
-    type: 3}
-  burstFireRate: 1
-  gunSpawn: {fileID: 4813798825526892726}
-  explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
-    type: 3}
-  laserSound: {fileID: 8300000, guid: b2d73faddcc71ab45b4e0fe4800a5667, type: 3}
-  burstSound: {fileID: 8300000, guid: 1933ef9560eefd04396f566d62f4f149, type: 3}
-  explosionSound: {fileID: 8300000, guid: d8945ca0c971c9643b532346ac1a5c74, type: 3}
+  isTouching: 0
+  gunEnd: {fileID: 4813798825526892726}
+  laserType:
+  - {fileID: 11400000, guid: c58bcdc7ad9903247942be5ad1f453bd, type: 2}
+  - {fileID: 11400000, guid: 9a13d5dc8015edf44ae45a8a99f6b615, type: 2}
+  selectedWeapon: 0
 --- !u!82 &7076888392994065547
 AudioSource:
   m_ObjectHideFlags: 0
