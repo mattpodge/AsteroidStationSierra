@@ -146,16 +146,13 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 15118c39bbd9c40499442dc2fae696e2, type: 2}
-  minSpawnDelay:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: cfcf162ca0c73b242a1359865a1e338e, type: 2}
-  maxSpawnDelay:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 64203078659d292438ba4bfd6558f9a9, type: 2}
-  lgAsteroids:
+  minSpawnDelay: 1.5
+  maxSpawnDelay: 3
+  asteroids:
   - {fileID: 1940102883881821776, guid: cd530dbf846740b4499967a394ccbdbd, type: 3}
+  - {fileID: 8716374163418147892, guid: a72a6bf789d0ee44ab122b3e649a9d41, type: 3}
+  - {fileID: 704789344726732665, guid: 648dd01e3b6a82b4ab75f9658fe9c9d4, type: 3}
+  - {fileID: 612672320398770085, guid: b74eca56f36abfe4fbf3bee2bf036ab0, type: 3}
 --- !u!114 &453608838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,25 +169,14 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 64203078659d292438ba4bfd6558f9a9, type: 2}
-        m_MethodName: ApplyChange
-        m_Mode: 4
+      - m_Target: {fileID: 7242015011990474233}
+        m_MethodName: IncreaseActiveSpawns
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: -0.1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: cfcf162ca0c73b242a1359865a1e338e, type: 2}
-        m_MethodName: ApplyChange
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -0.1
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

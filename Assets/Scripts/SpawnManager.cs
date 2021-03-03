@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     private readonly float minSpawnDelayLimit = 0.125f;
     private readonly int maxAsteroidsCountLimit = 40;
 
-    public List<GameObject> lgAsteroids;
+    public GameObject[] asteroids;
 
     private int asteroidActiveCount, maxAsteroidCount;
     private float xSpawnRange, ySpawnRange;
@@ -22,6 +22,7 @@ public class SpawnManager : MonoBehaviour
         // Set our spawn ranges based on camera/screen size
         xSpawnRange = CameraSize.width * 1.25f;
         ySpawnRange = CameraSize.height * 1.25f;
+
 
         SpawnPointTransforms();
         SensorTransforms();
@@ -60,7 +61,7 @@ public class SpawnManager : MonoBehaviour
             float randomXPos = Random.Range(-xSpawnRange, xSpawnRange);
             float randomYPos = Random.Range(-ySpawnRange, ySpawnRange);
             int spawnIndex = Random.Range(0, spawnPoints.Length);
-            int asteroidIndex = Random.Range(0, lgAsteroids.Count);
+            int asteroidIndex = Random.Range(0, asteroids.Length);
 
 
             // Spawn position is dependant on which spawn point is instantiating the asteroid
@@ -76,7 +77,7 @@ public class SpawnManager : MonoBehaviour
             // As long as we haven't hit our max asteroid count, spawn an asteroid
             if (asteroidActiveCount < maxAsteroidCount)
             {
-                Instantiate(lgAsteroids[asteroidIndex], spawnPos, lgAsteroids[asteroidIndex].transform.rotation);
+                Instantiate(asteroids[asteroidIndex], spawnPos, transform.rotation);
             }
         }
     }
