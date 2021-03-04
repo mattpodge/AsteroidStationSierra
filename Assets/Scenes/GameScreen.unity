@@ -981,9 +981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore:
-    UseConstant: 1
+    UseConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 97f34e2c16ef18f47b158319113df17d, type: 2}
 --- !u!114 &1786135517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1098,12 +1098,6 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: 3034180ca3f7cbb4db5f2be4915ec5fc, type: 2}
     response:
       m_PersistentCalls:
-        m_Calls: []
-    responseForSentString:
-      m_PersistentCalls:
-        m_Calls: []
-    responseForSentInt:
-      m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1786135516}
           m_MethodName: UpdateScore
@@ -1116,6 +1110,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
     responseForSentFloat:
       m_PersistentCalls:
         m_Calls: []
