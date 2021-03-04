@@ -6,7 +6,6 @@ public class ScoreManager : MonoBehaviour
 {
     public IntVariable currentScore;
 
-
     public void UpdateScore(int scoreToAdd)
     {
         currentScore.ApplyChange(scoreToAdd);

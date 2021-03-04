@@ -8,6 +8,7 @@ public class Asteroid : MonoBehaviour
     private Rigidbody2D asteroidRb;
 
     public AsteroidsData asteroidsData;
+    private int scoreValue;
     private float targetAccuracy;
     private float rotationRange;
     private float minVelocity;
@@ -25,6 +26,7 @@ public class Asteroid : MonoBehaviour
     {
         asteroidRb = GetComponent<Rigidbody2D>();
 
+        scoreValue = asteroidsData.scoreValue;
         targetAccuracy = asteroidsData.targetAccuracy;
         rotationRange = asteroidsData.rotationRange;
         minVelocity = asteroidsData.minVelocity;
@@ -68,7 +70,7 @@ public class Asteroid : MonoBehaviour
             Destroy(gameObject);
             Destroy(collision.gameObject);
 
-            asteroidShotEvent.sentInt = asteroidsData.scoreValue;
+            asteroidShotEvent.sentInt = scoreValue;
             asteroidShotEvent.Raise();
         }
     }

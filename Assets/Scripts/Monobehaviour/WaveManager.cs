@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour
     private int currentWaveTarget;
     private int nextWaveTarget;
 
+    [Space]
     public UnityEvent NextWave;
 
     void Start()
