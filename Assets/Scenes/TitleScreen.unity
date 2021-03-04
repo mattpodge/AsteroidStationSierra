@@ -263,12 +263,12 @@ PrefabInstance:
     - target: {fileID: 7242015011990474233, guid: 4ab8d5aea14578d42ad4e116490440c6,
         type: 3}
       propertyPath: maxSpawnDelay
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7242015011990474233, guid: 4ab8d5aea14578d42ad4e116490440c6,
         type: 3}
       propertyPath: minSpawnDelay
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7242015011990474233, guid: 4ab8d5aea14578d42ad4e116490440c6,
         type: 3}
@@ -278,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 7242015011990474233, guid: 4ab8d5aea14578d42ad4e116490440c6,
         type: 3}
       propertyPath: currentWave.ConstantValue
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7242015011990474234, guid: 4ab8d5aea14578d42ad4e116490440c6,
         type: 3}

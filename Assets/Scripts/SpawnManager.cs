@@ -10,7 +10,8 @@ public class SpawnManager : MonoBehaviour
     private readonly float minSpawnDelayLimit = 0.125f;
     private readonly int maxAsteroidsCountLimit = 40;
 
-    public GameObject[] asteroids;
+    public AsteroidsData asteroidsData;
+    private GameObject[] asteroids;
 
     private int asteroidActiveCount, maxAsteroidCount;
     private float xSpawnRange, ySpawnRange;
@@ -23,11 +24,14 @@ public class SpawnManager : MonoBehaviour
         xSpawnRange = CameraSize.width * 1.25f;
         ySpawnRange = CameraSize.height * 1.25f;
 
+        // Set our initial spawnlimits and delays
+        maxAsteroidCount = 5;
+
+        asteroids = asteroidsData.asteroids;
 
         SpawnPointTransforms();
         SensorTransforms();
         StartCoroutine(SpawnAsteroids());
-        IncreaseActiveSpawns();
     }
 
     private void Update()
@@ -63,22 +67,21 @@ public class SpawnManager : MonoBehaviour
             int spawnIndex = Random.Range(0, spawnPoints.Length);
             int asteroidIndex = Random.Range(0, asteroids.Length);
 
-
             // Spawn position is dependant on which spawn point is instantiating the asteroid
             Vector2 spawnPos = (
                 spawnPoints[spawnIndex].transform.position.y == 0f ? 
                 new Vector2(spawnPoints[spawnIndex].transform.position.x, randomYPos) : 
                 new Vector2(randomXPos, spawnPoints[spawnIndex].transform.position.y)
             );
-            
-            // Some randomness to when asteroids spawn
-            yield return new WaitForSeconds(spawnDelay);
 
             // As long as we haven't hit our max asteroid count, spawn an asteroid
             if (asteroidActiveCount < maxAsteroidCount)
             {
                 Instantiate(asteroids[asteroidIndex], spawnPos, transform.rotation);
             }
+
+            // Some randomness to when asteroids spawn
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 

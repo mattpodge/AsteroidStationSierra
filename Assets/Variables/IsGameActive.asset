@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a1248e0cd515e43a92dd71627cf360, type: 3}
-  m_Name: AsteroidShot
+  m_Script: {fileID: 11500000, guid: 514062b68f763104e91cb51b0fc5c298, type: 3}
+  m_Name: IsGameActive
   m_EditorClassIdentifier: 
-  sentString: 
-  sentInt: 0
-  sentFloat: 0
-  sentBool: 0
+  Value: 0

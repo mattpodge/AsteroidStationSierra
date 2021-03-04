@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54a210187d4e3a345834554b0209e793, type: 3}
-  m_Name: WaveIncrement
+  m_Name: CurrentScore
   m_EditorClassIdentifier: 
-  DeveloperDescription: Increment the max spawns each wave by this constant
-  Value: 5
+  Value: 0

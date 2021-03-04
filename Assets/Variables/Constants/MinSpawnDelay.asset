@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 369f1eb01afa1824bb18d40cdbcbc655, type: 3}
-  m_Name: CurrentScore
+  m_Name: MinSpawnDelay
   m_EditorClassIdentifier: 
-  DeveloperDescription: The current game score
-  Value: 0
+  Value: 0.5
