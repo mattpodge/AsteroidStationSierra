@@ -1093,6 +1093,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7242015011990474233, guid: 4ab8d5aea14578d42ad4e116490440c6,
         type: 3}
+      propertyPath: maxAsteroidCount
+      value: 
+      objectReference: {fileID: 11400000, guid: a3d0fedc438544341aa1648d15b73413,
+        type: 2}
+    - target: {fileID: 7242015011990474233, guid: 4ab8d5aea14578d42ad4e116490440c6,
+        type: 3}
       propertyPath: asteroids.Array.size
       value: 4
       objectReference: {fileID: 0}

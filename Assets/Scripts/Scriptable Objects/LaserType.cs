@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu (menuName = "Object Data / Laser Type")]
 public class LaserType : ScriptableObject
 {
     public GameObject projectile;

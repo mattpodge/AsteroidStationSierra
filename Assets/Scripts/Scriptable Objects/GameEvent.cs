@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Game Event")]
 public class GameEvent : ScriptableObject
 {
     public string sentString;

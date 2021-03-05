@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public IntReference currentWave, waveIncrement;
+    public IntVariable maxAsteroidCount;
     public float minSpawnDelay, maxSpawnDelay;
 
     private readonly float minSpawnDelayLimit = 0.125f;
@@ -13,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     public AsteroidsData asteroidsData;
     private GameObject[] asteroids;
 
-    private int asteroidActiveCount, maxAsteroidCount;
+    private int asteroidActiveCount;
     private float xSpawnRange, ySpawnRange;
     private GameObject[] sensors, spawnPoints;
 
@@ -24,8 +25,8 @@ public class SpawnManager : MonoBehaviour
         xSpawnRange = CameraSize.width * 1.25f;
         ySpawnRange = CameraSize.height * 1.25f;
 
-        // Set our initial spawnlimits and delays
-        maxAsteroidCount = 5;
+        // Reset max spawns value
+        maxAsteroidCount.SetValue(waveIncrement.Value);
 
         asteroids = asteroidsData.asteroids;
 
@@ -42,10 +43,10 @@ public class SpawnManager : MonoBehaviour
 
     public void IncreaseActiveSpawns()
     {
-        if (maxAsteroidCount != maxAsteroidsCountLimit)
+        if (maxAsteroidCount.Value != maxAsteroidsCountLimit)
         {
             // Increase how many active spawns are allowed
-            maxAsteroidCount += waveIncrement.Value;
+            maxAsteroidCount.ApplyChange(waveIncrement.Value);
         }
 
         if (minSpawnDelay > minSpawnDelayLimit)
@@ -75,7 +76,7 @@ public class SpawnManager : MonoBehaviour
             );
 
             // As long as we haven't hit our max asteroid count, spawn an asteroid
-            if (asteroidActiveCount < maxAsteroidCount)
+            if (asteroidActiveCount < maxAsteroidCount.Value)
             {
                 Instantiate(asteroids[asteroidIndex], spawnPos, transform.rotation);
             }

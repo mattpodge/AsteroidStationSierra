@@ -7,12 +7,18 @@ public class Asteroid : MonoBehaviour
 {
     private Rigidbody2D asteroidRb;
 
+    public IntVariable maxAsteroidCount;
+
     public AsteroidsData asteroidsData;
     private int scoreValue;
+    private bool targetsPlayer;
     private float targetAccuracy;
     private float rotationRange;
     private float minVelocity;
     private float maxVelocity;
+    private ParticleSystem explosionEffect;
+
+    public AsteroidsData subAsteroids;
 
     private Vector3 asteroidDirection;
     private float randomAsteroidRotation;
@@ -27,10 +33,12 @@ public class Asteroid : MonoBehaviour
         asteroidRb = GetComponent<Rigidbody2D>();
 
         scoreValue = asteroidsData.scoreValue;
+        targetsPlayer = asteroidsData.targetsPlayer;
         targetAccuracy = asteroidsData.targetAccuracy;
         rotationRange = asteroidsData.rotationRange;
         minVelocity = asteroidsData.minVelocity;
         maxVelocity = asteroidsData.maxVelocity;
+        explosionEffect = asteroidsData.explosionEffect;
 
         // Increase target accuracy every wave
         targetAccuracy -= asteroidsData.currentWave.Value * 0.25f;
@@ -42,12 +50,20 @@ public class Asteroid : MonoBehaviour
         randomAsteroidRotation = Random.Range(-rotationRange, rotationRange);
         randomAsteroidVelocity = Random.Range(minVelocity, maxVelocity);
 
-        // Decrease the accuracy of our asteroids within our error window ranges
-        target.x += Random.Range(-targetAccuracy, targetAccuracy);
-        target.y += Random.Range(-targetAccuracy, targetAccuracy);
+        if (targetsPlayer)
+        {
+            // Decrease the accuracy of our asteroids within our error window ranges
+            target.x += Random.Range(-targetAccuracy, targetAccuracy);
+            target.y += Random.Range(-targetAccuracy, targetAccuracy);
+
+        } else
+        {
+            target = new Vector3(Random.Range(-CameraSize.width, CameraSize.width), Random.Range(-CameraSize.height, CameraSize.height), 0);
+        }
 
         // Set the point where our asteroid is aiming for
         asteroidDirection = (target - transform.position).normalized;
+
 
         // Give our asteroid a push on start
         asteroidRb.AddForce(asteroidDirection * randomAsteroidVelocity, ForceMode2D.Impulse);
@@ -63,15 +79,36 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Sensor"))
         {
             Destroy(gameObject);
+
+            if(!targetsPlayer)
+            {
+                maxAsteroidCount.ApplyChange(-1);
+            }
         }
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
-
+            Instantiate(explosionEffect, transform.position, transform.rotation);
             asteroidShotEvent.sentInt = scoreValue;
             asteroidShotEvent.Raise();
+
+            if (targetsPlayer)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    int index = Random.Range(0, subAsteroids.asteroids.Length);
+                    Instantiate(subAsteroids.asteroids[index], transform.position + new Vector3(Random.value, Random.value, 0), transform.rotation);
+                }
+                maxAsteroidCount.ApplyChange(1);
+            } else if (!targetsPlayer)
+            {
+                maxAsteroidCount.ApplyChange(-1);
+            }
+
+            Debug.Log(maxAsteroidCount.Value);
         }
+
     }
 }
