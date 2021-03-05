@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AsteroidShot
   m_EditorClassIdentifier: 
   sentString: 
-  sentInt: 0
+  sentInt: 10
   sentFloat: 0
   sentBool: 0

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class PowerUps : MonoBehaviour
 {
-    private GameManager gm;
-    private PlayerController pc;
-
     public static bool isShieldActive;
     public Button shieldButton;
     public int shieldCooldown = 15;
@@ -25,8 +22,6 @@ public class PowerUps : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
 
         shieldAudio = shieldPowerUp.GetComponent<AudioSource>();
 
