@@ -43,7 +43,10 @@ public class WaveManager : MonoBehaviour
         int waveTarget = currentWaveTarget + nextWaveTarget;
 
         currentWave.ApplyChange(1);
-        waveText.text = "Wave: " + currentWave.Value.ToString("D3");
+        if (waveText != null)
+        {
+            waveText.text = "Wave: " + currentWave.Value.ToString("D3");
+        }
         nextWave = currentWave.Value + 1;
         currentWaveTarget = waveTarget;
         nextWaveTarget = nextWave * wavePoolIncrease;
