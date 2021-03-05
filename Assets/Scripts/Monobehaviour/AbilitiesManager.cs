@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUps : MonoBehaviour
+public class AbilitiesManager : MonoBehaviour
 {
     public static bool isShieldActive;
     public Button shieldButton;

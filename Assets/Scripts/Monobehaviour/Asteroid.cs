@@ -106,9 +106,6 @@ public class Asteroid : MonoBehaviour
             {
                 maxAsteroidCount.ApplyChange(-1);
             }
-
-            Debug.Log(maxAsteroidCount.Value);
         }
-
     }
 }

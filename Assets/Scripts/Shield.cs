@@ -14,7 +14,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            PowerUps.isShieldActive = false;
+            AbilitiesManager.isShieldActive = false;
         }
     }
 }
