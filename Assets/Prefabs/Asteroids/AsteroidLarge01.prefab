@@ -114,7 +114,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1940102883881821776}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: cd43e278a5b0dbd41889bc2c59be6031, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -163,10 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1940102883881821776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c859b5392d6ac94a9791b98af6be7c5, type: 3}
+  m_Script: {fileID: 11500000, guid: f90775a5927b9ec44b63645093a4cfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAsteroidCount: {fileID: 11400000, guid: a3d0fedc438544341aa1648d15b73413, type: 2}
-  asteroidsData: {fileID: 11400000, guid: dee77dd403b2e7d45b29ff2307e26ea7, type: 2}
-  subAsteroids: {fileID: 11400000, guid: 262bf0b3989475648b5ffabc5e8b4207, type: 2}
-  asteroidShotEvent: {fileID: 11400000, guid: 3034180ca3f7cbb4db5f2be4915ec5fc, type: 2}
+  maxAsteroidCount: {fileID: 11400000, guid: 7d15a7f938253f74f8ba303cfd71c1d3, type: 2}
+  asteroidsData: {fileID: 11400000, guid: ed76bdf40f90a8643af3dc3b7c7c9e57, type: 2}
+  subAsteroids: {fileID: 11400000, guid: 89221e6a9c3c6a34cb157e672411b9c9, type: 2}
+  asteroidShotEvent: {fileID: 11400000, guid: 074d088b8d1b3e449a691aacd5f87599, type: 2}

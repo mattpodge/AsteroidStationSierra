@@ -9,23 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24c3f76450fa99468ae655e15f3fd34, type: 3}
+  m_Script: {fileID: 11500000, guid: 877530b4d12fc1840bbfbea2922e66aa, type: 3}
   m_Name: AsteroidsLarge
   m_EditorClassIdentifier: 
   scoreValue: 10
   targetsPlayer: 1
   targetAccuracy: 8
   rotationRange: 180
-  minVelocity: 0.5
+  minVelocity: 1
   maxVelocity: 2.5
   currentWave:
     UseConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 11400000, guid: aa850437015d1fd49967749afa3b994a, type: 2}
+    Variable: {fileID: 11400000, guid: 42cb70105bad03b4787fdec6b0377af8, type: 2}
   explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
     type: 3}
   asteroids:
-  - {fileID: 1940102883881821776, guid: cd530dbf846740b4499967a394ccbdbd, type: 3}
-  - {fileID: 6219092393053705352, guid: 03ff61c1574685340b802e30f64ef1ff, type: 3}
-  - {fileID: 4198148403456432754, guid: 648dd01e3b6a82b4ab75f9658fe9c9d4, type: 3}
-  - {fileID: 6131882314610003674, guid: b74eca56f36abfe4fbf3bee2bf036ab0, type: 3}
+  - {fileID: 1940102883881821776, guid: 5a08d24d659e78a4badde7882eea2ac7, type: 3}

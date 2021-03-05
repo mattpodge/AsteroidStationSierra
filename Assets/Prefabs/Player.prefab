@@ -417,14 +417,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9138112596816812013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2ebbcb834163046aea3fdc58daf231, type: 3}
+  m_Script: {fileID: 11500000, guid: ab71cfe8f64cd3d4d8dbd2b2936aac76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isTouching: 0
   gunEnd: {fileID: 4813798825526892726}
   laserType:
-  - {fileID: 11400000, guid: c58bcdc7ad9903247942be5ad1f453bd, type: 2}
-  - {fileID: 11400000, guid: 9a13d5dc8015edf44ae45a8a99f6b615, type: 2}
+  - {fileID: 11400000, guid: b21e0d6367d12d14f9c2741fe3c047c8, type: 2}
   selectedWeapon: 0
 --- !u!82 &7076888392994065547
 AudioSource:

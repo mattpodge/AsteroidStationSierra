@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369f1eb01afa1824bb18d40cdbcbc655, type: 3}
+  m_Script: {fileID: 11500000, guid: e5011c8ad09deb7459a669988ced0b43, type: 3}
   m_Name: MaxSpawnDelay
   m_EditorClassIdentifier: 
-  DeveloperDescription: Max time between spawns
-  Value: 2
+  Value: 3
