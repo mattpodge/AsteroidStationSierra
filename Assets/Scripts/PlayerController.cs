@@ -10,8 +10,12 @@ public class PlayerController : MonoBehaviour
     public int selectedWeapon = 0;
     private float fireDelay;
 
+    private Animator playerAnim;
+
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
+        playerAnim.StopPlayback();
         fireDelay = laserType[selectedWeapon].fireRate;
     }
 
@@ -22,8 +26,18 @@ public class PlayerController : MonoBehaviour
             Touch touch = Input.touches[i];
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
-            RotateShip(touchPosition);
-            FireWeapon();
+            if (i == 0)
+            {
+                RotateShip(touchPosition);
+                FireWeapon();
+            }
+        }
+
+        if (Input.touchCount != 0) {
+            playerAnim.SetBool("isFiring", true);
+        } else
+        {
+            playerAnim.SetBool("isFiring", false);
         }
     }
 
@@ -35,9 +49,11 @@ public class PlayerController : MonoBehaviour
 
     void FireWeapon()
     {
+        
         fireDelay -= Time.deltaTime;
         if(fireDelay <= 0f)
         {
+            playerAnim.speed = 1 / laserType[selectedWeapon].fireRate;
             Instantiate(laserType[selectedWeapon].projectile, gunEnd.transform.position, transform.rotation);
             fireDelay = laserType[selectedWeapon].fireRate;
         }
