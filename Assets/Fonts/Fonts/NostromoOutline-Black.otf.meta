@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 375d84211a95e7d4e9bb88d77842bda4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nostromo Outline
+  fontNames:
+  - Nostromo Outline
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d1de27781dd58074b8c0245c788ec1f6, type: 3}
+  - {fileID: 12800000, guid: a4ccdf4a90b7d4c4e8b7277302a412f5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
