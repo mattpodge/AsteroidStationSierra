@@ -99,7 +99,9 @@ public class Asteroid : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     int index = Random.Range(0, subAsteroids.asteroids.Length);
-                    Instantiate(subAsteroids.asteroids[index], transform.position + new Vector3(Random.value, Random.value, 0), transform.rotation);
+                    float xRand = Random.Range(-0.5f, 0.5f);
+                    float yRand = Random.Range(-0.5f, 0.5f);
+                    Instantiate(subAsteroids.asteroids[index], transform.position + new Vector3(xRand, yRand, 0), transform.rotation);
                 }
                 maxAsteroidCount.ApplyChange(1);
             } else if (!targetsPlayer)
