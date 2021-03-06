@@ -16,9 +16,10 @@ MonoBehaviour:
   abilityIsActive: 0
   abilityPrefab: {fileID: 1189876710884237165, guid: dbdb4b7c87e13ea4c9589f3434bbc4bd,
     type: 3}
-  abilityChargeTime: 10
-  abilityCooldownTime: 15
+  abilityChargeTime: 5
+  abilityCooldownTime: 10
   abilityButtonImg: {fileID: 21300000, guid: c2b9225cdbc3f7840ad7c47ee3b3799c, type: 3}
   abilityButtonCooldownImg: {fileID: 21300000, guid: 23590b019951ea6448d2e93d1bd16245,
     type: 3}
+  abilityBtn: {fileID: 0}
   gameEvent: {fileID: 11400000, guid: b3904fe59784aeb40bbdc02a2bb0ccd9, type: 2}

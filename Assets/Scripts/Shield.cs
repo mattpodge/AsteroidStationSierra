@@ -1,25 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward, 360.0f * 0.5f * Time.deltaTime);
+        transform.Rotate(Vector3.forward, 360.0f * 1f * Time.deltaTime);
     }
 
-    public void ActivateShield()
-    {
-        Debug.Log("Shield Activated!");
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            //AbilitiesManager.isShieldActive = false;
+            gameObject.SetActive(false);
         }
     }
 }

@@ -6,8 +6,11 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     public GameObject gunEnd;
-    public List<LaserType> laserType;
     public int selectedWeapon = 0;
+    public List<LaserType> laserType;
+
+    public List<AbilityType> abilities;
+
     private float fireDelay;
 
     private Animator playerAnim;

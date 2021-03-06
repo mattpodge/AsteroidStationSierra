@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu (menuName = "Object Data / Ability")]
 public class AbilityType : ScriptableObject
@@ -18,4 +16,6 @@ public class AbilityType : ScriptableObject
     public Sprite abilityButtonCooldownImg;
 
     public GameEvent gameEvent;
+
+    [HideInInspector] public Button abilityBtn;
 }

@@ -19,10 +19,12 @@ public class AbilitiesManager : MonoBehaviour
             int yPos = -100 - (i * 250);
 
             GameObject abilityButton = Instantiate(buttonPrefab);
+            abilityButton.transform.name = ability.abilityName + "Button";
             abilityButton.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>(), false);
             abilityButton.transform.position += new Vector3(-100, yPos, 0);
 
             Button abilityBtn = abilityButton.GetComponent<Button>();
+            ability.abilityBtn = abilityBtn;
 
             Image btnImg = abilityButton.GetComponent<Image>();
             btnImg.sprite = ability.abilityButtonImg;
@@ -33,7 +35,9 @@ public class AbilitiesManager : MonoBehaviour
             TextMeshProUGUI btnName = abilityButton.transform.Find("AbilityName").GetComponent<TextMeshProUGUI>();
             btnName.text = ability.abilityName;
 
-            StartCoroutine(CoolDown(abilityBtn, cooldownImg, ability.abilityCooldownTime));
+            StartCoroutine(AbilityCharge(ability));
+
+            ability.gameEvent.sentInt = i;
 
             abilityButton.GetComponent<Button>().onClick.AddListener(() => ability.gameEvent.Raise());
 
@@ -41,21 +45,50 @@ public class AbilitiesManager : MonoBehaviour
         }
     }
 
-    IEnumerator CoolDown(Button powerUpButton, Image coolDownImage, float cooldown)
+    public void ActivateAbility(int abIndex)
     {
-        float timeLeft = 0;
-        coolDownImage.fillAmount = 0;
-        powerUpButton.interactable = false;
+        AbilityType ability = abilities[abIndex];
+        ability.abilityIsActive = true;
+        StartCoroutine(AbilityCooldown(ability));
+    }
 
-        while (timeLeft < 1f)
+    IEnumerator AbilityCooldown(AbilityType ability)
+    {
+        Image progressImg = ability.abilityBtn.transform.Find("CooldownProg").GetComponent<Image>();
+
+        float timeLeft = 1f;
+        progressImg.fillAmount = 1;
+        ability.abilityBtn.interactable = false;
+
+        while (timeLeft > 0)
         {
-            coolDownImage.fillAmount = timeLeft;
-            timeLeft +=  (Time.deltaTime / cooldown);
+            progressImg.fillAmount = timeLeft;
+            timeLeft -= (Time.deltaTime / ability.abilityCooldownTime);
             yield return null;
         }
 
-        powerUpButton.interactable = true;
-        coolDownImage.fillAmount = 1;
+        progressImg.fillAmount = 0;
+        ability.abilityIsActive = false;
 
+        StartCoroutine(AbilityCharge(ability));
     }
+
+    IEnumerator AbilityCharge(AbilityType ability)
+    {
+        Image progressImg = ability.abilityBtn.transform.Find("CooldownProg").GetComponent<Image>();
+
+        float timeLeft = 0;
+        progressImg.fillAmount = 0;
+
+        while (timeLeft < 1f)
+        {
+            progressImg.fillAmount = timeLeft;
+            timeLeft +=  (Time.deltaTime / ability.abilityChargeTime);
+            yield return null;
+        }
+
+        ability.abilityBtn.interactable = true;
+        progressImg.fillAmount = 1;
+    }
+
 }

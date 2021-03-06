@@ -21,4 +21,5 @@ MonoBehaviour:
   abilityButtonImg: {fileID: 21300000, guid: dfc80922a64e448468f61f434f5a0b46, type: 3}
   abilityButtonCooldownImg: {fileID: 21300000, guid: 23590b019951ea6448d2e93d1bd16245,
     type: 3}
+  abilityBtn: {fileID: 0}
   gameEvent: {fileID: 11400000, guid: 9a6c40a53cf199f4c8cabdd232a09a88, type: 2}
