@@ -10,11 +10,16 @@ public class Shield : MonoBehaviour
         transform.Rotate(Vector3.forward, 360.0f * 0.5f * Time.deltaTime);
     }
 
+    public void ActivateShield()
+    {
+        Debug.Log("Shield Activated!");
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
-            AbilitiesManager.isShieldActive = false;
+            //AbilitiesManager.isShieldActive = false;
         }
     }
 }

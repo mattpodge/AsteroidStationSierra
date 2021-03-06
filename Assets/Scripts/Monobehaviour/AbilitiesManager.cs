@@ -2,81 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilitiesManager : MonoBehaviour
 {
-    public static bool isShieldActive;
-    public Button shieldButton;
-    public int shieldCooldown = 15;
-    public Image shieldCooldownImg;
-    public GameObject shieldPowerUp;
+    public AbilityType[] abilities;
+    public GameObject buttonPrefab;
 
-    private AudioSource shieldAudio;
-    public AudioClip shieldStartUp;
-
-    public static bool isBurstActive;
-    public Button burstButton;
-    public int burstCooldown = 30;
-    public Image burstCooldownImg;
-
-    // Start is called before the first frame update
     void Start()
     {
+        // Instantiate and update a button for each ability
+        int i = 0;
 
-        shieldAudio = shieldPowerUp.GetComponent<AudioSource>();
-
-        shieldButton.onClick.AddListener(ActivateShield);
-        burstButton.onClick.AddListener(ActivateBurstFire);
-
-        StartCoroutine(CoolDown(shieldButton, shieldCooldownImg, shieldCooldown));
-        StartCoroutine(CoolDown(burstButton, burstCooldownImg, burstCooldown));
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-            if (isShieldActive)
-            {
-                shieldPowerUp.SetActive(true);
-            }
-            else
-            {
-                shieldPowerUp.SetActive(false);
-            }
-    }
-
-    public void ActivateShield()
-    {
-        isShieldActive = true;
-        AudioSource.PlayClipAtPoint(shieldStartUp, Vector3.zero, 1.0f);
-        StartCoroutine(CoolDown(shieldButton, shieldCooldownImg, shieldCooldown));
-    }
-
-    public void ActivateBurstFire()
-    {
-        StartCoroutine(BurstFire());
-    }
-
-    IEnumerator BurstFire()
-    {
-        isBurstActive = true;
-
-        float timeLeft = 1f;
-        burstCooldownImg.fillAmount = 1;
-        
-        while (timeLeft > 0f)
+        foreach (AbilityType ability in abilities)
         {
-            burstCooldownImg.fillAmount = timeLeft;
-            timeLeft -= Time.deltaTime / 10;
-            yield return null;
-        }
+            int yPos = -100 - (i * 250);
 
-        burstCooldownImg.fillAmount = 0;
-        isBurstActive = false;
-        StartCoroutine(CoolDown(burstButton, burstCooldownImg, burstCooldown));
+            GameObject abilityButton = Instantiate(buttonPrefab);
+            abilityButton.transform.SetParent(GameObject.Find("Canvas").GetComponent<RectTransform>(), false);
+            abilityButton.transform.position += new Vector3(-100, yPos, 0);
+
+            Button abilityBtn = abilityButton.GetComponent<Button>();
+
+            Image btnImg = abilityButton.GetComponent<Image>();
+            btnImg.sprite = ability.abilityButtonImg;
+
+            Image cooldownImg = abilityButton.transform.Find("CooldownProg").GetComponent<Image>();
+            cooldownImg.sprite = ability.abilityButtonCooldownImg;
+
+            TextMeshProUGUI btnName = abilityButton.transform.Find("AbilityName").GetComponent<TextMeshProUGUI>();
+            btnName.text = ability.abilityName;
+
+            StartCoroutine(CoolDown(abilityBtn, cooldownImg, ability.abilityCooldownTime));
+
+            abilityButton.GetComponent<Button>().onClick.AddListener(() => ability.gameEvent.Raise());
+
+            i++;
+        }
     }
 
-    IEnumerator CoolDown(Button powerUpButton, Image coolDownImage, int cooldown)
+    IEnumerator CoolDown(Button powerUpButton, Image coolDownImage, float cooldown)
     {
         float timeLeft = 0;
         coolDownImage.fillAmount = 0;
