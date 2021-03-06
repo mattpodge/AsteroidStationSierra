@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool isTouching;
     public GameObject gunEnd;
     public List<LaserType> laserType;
     public int selectedWeapon = 0;
@@ -19,21 +19,27 @@ public class PlayerController : MonoBehaviour
         fireDelay = laserType[selectedWeapon].fireRate;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         for (int i = 0; i < Input.touchCount; i++)
         {
-            Touch touch = Input.touches[i];
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-
-            if (i == 0)
+            // Ignore when we touch the UI
+            if (!IsPointerOverUI(i))
             {
-                RotateShip(touchPosition);
+                Touch touch = Input.touches[i];
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+
                 FireWeapon();
+
+                if (Input.touches[i].phase == TouchPhase.Moved)
+                {
+                    RotateShip(touchPosition);
+                }
+
             }
         }
 
-        if (Input.touchCount != 0) {
+        if (Input.touchCount > 0 && !IsPointerOverUI(0)) {
             playerAnim.SetBool("isFiring", true);
         } else
         {
@@ -49,7 +55,6 @@ public class PlayerController : MonoBehaviour
 
     void FireWeapon()
     {
-        
         fireDelay -= Time.deltaTime;
         if(fireDelay <= 0f)
         {
@@ -57,5 +62,11 @@ public class PlayerController : MonoBehaviour
             Instantiate(laserType[selectedWeapon].projectile, gunEnd.transform.position, transform.rotation);
             fireDelay = laserType[selectedWeapon].fireRate;
         }
+    }
+
+    public bool IsPointerOverUI(int fingerId)
+    {
+        EventSystem eventSystem = EventSystem.current;
+        return (eventSystem.IsPointerOverGameObject(fingerId) && eventSystem.currentSelectedGameObject != null);
     }
 }

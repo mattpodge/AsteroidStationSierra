@@ -26,3 +26,6 @@ MonoBehaviour:
     type: 3}
   asteroids:
   - {fileID: 7207117773115887871, guid: 42e93286ccce9a64e928da5b6b696ef6, type: 3}
+  - {fileID: 7824169600315583456, guid: bd13c9206dfecf542b276053bb46b248, type: 3}
+  - {fileID: 9044594398192565740, guid: 586d4ef23266b514bb6156732ae5ee63, type: 3}
+  - {fileID: 1076540103837002622, guid: 4c947a73c1561ea43ba43dbc44546576, type: 3}
