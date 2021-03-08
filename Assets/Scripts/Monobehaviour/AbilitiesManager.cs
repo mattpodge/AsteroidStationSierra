@@ -8,6 +8,7 @@ public class AbilitiesManager : MonoBehaviour
 {
     public AbilityType[] abilities;
     public GameObject buttonPrefab;
+    public BoolVariable isGameActive;
 
     void Start()
     {

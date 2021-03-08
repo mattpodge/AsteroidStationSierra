@@ -114,9 +114,6 @@ public class Asteroid : MonoBehaviour
                     Instantiate(subAsteroids.asteroids[index], spawnPos, transform.rotation);
                 }
                 maxAsteroidCount.ApplyChange(1);
-            } else if (!targetsPlayer)
-            {
-                maxAsteroidCount.ApplyChange(-1);
             }
         }
     }

@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerAnim;
 
+    public GameObject explosionEffect;
+    public GameEvent gameOver;
+
     void Start()
     {
         playerAnim = GetComponent<Animator>();
-        playerAnim.StopPlayback();
         fireDelay = weapons[selectedWeapon].projectileDelay;
     }
 
@@ -88,5 +90,15 @@ public class PlayerController : MonoBehaviour
     {
         EventSystem eventSystem = EventSystem.current;
         return (eventSystem.IsPointerOverGameObject(fingerId) && eventSystem.currentSelectedGameObject != null);
+    }
+
+private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            gameObject.SetActive(false);
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            gameOver.Raise();
+        }
     }
 }
