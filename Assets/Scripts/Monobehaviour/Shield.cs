@@ -5,7 +5,7 @@ public class Shield : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward, 360.0f * 1f * Time.deltaTime);
+        transform.Rotate(Vector3.forward, 90f * 1.0f * Time.deltaTime);
     }
 
 

@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 9138112596816812014}
   - component: {fileID: 7076888392994065547}
   - component: {fileID: 468503745}
+  - component: {fileID: 1217648374}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -325,9 +326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunEnd: {fileID: 4813798825526892726}
-  laserType:
+  shield: {fileID: 7839510832780713262}
+  abilities:
+  - {fileID: 11400000, guid: ba5a66f35c61a9741bc7db185607bf87, type: 2}
+  - {fileID: 11400000, guid: 9eb05705d32e0aa47952757e7cc4fb1d, type: 2}
+  weapons:
   - {fileID: 11400000, guid: b21e0d6367d12d14f9c2741fe3c047c8, type: 2}
-  selectedWeapon: 0
+  - {fileID: 11400000, guid: 9eb05705d32e0aa47952757e7cc4fb1d, type: 2}
 --- !u!82 &7076888392994065547
 AudioSource:
   m_ObjectHideFlags: 0
@@ -453,6 +458,47 @@ PolygonCollider2D:
       - {x: -0.41586646, y: -0.3336951}
       - {x: -0.00027621118, y: -0.23206013}
       - {x: 0.42187884, y: -0.3360596}
+--- !u!114 &1217648374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138112596816812013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7256d6bbb989bc4479aa561c0a48e392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: ActivateShield
+    gameEvent: {fileID: 11400000, guid: 9a6c40a53cf199f4c8cabdd232a09a88, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7839510832780713262}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &9138112597503934956
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +667,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9138112596816812015}
     m_Modifications:
+    - target: {fileID: 910831215292957058, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
         type: 3}
       propertyPath: m_RootOrder
@@ -634,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
         type: 3}
@@ -681,8 +732,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield
       objectReference: {fileID: 0}
+    - target: {fileID: 910831215292957071, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471bc67fff9e7ff4faec0ebdd81e7418, type: 3}
+--- !u!1 &7839510832780713262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 910831215292957071, guid: 471bc67fff9e7ff4faec0ebdd81e7418,
+    type: 3}
+  m_PrefabInstance: {fileID: 6946914280082463905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7839510832780713250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 910831215292957059, guid: 471bc67fff9e7ff4faec0ebdd81e7418,

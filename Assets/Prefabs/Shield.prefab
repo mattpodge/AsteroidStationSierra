@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 910831215292957058}
   - component: {fileID: -5974389794981155653}
   - component: {fileID: 1535336349844598412}
+  - component: {fileID: 3591035636907547139}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!114 &-5974389794981155653
 MonoBehaviour:
@@ -138,3 +139,22 @@ PolygonCollider2D:
       - {x: -0.70210683, y: 0.3196058}
       - {x: -0.77516365, y: -0.060000062}
       - {x: -0.6448364, y: -0.049215585}
+--- !u!95 &3591035636907547139
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910831215292957071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 240e326251662c74e8047c3f7c3b3c9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
