@@ -16,6 +16,7 @@ MonoBehaviour:
   abilityIsActive: 1
   abilityPrefab: {fileID: 1189876710884237165, guid: dbdb4b7c87e13ea4c9589f3434bbc4bd,
     type: 3}
+  soundFx: {fileID: 8300000, guid: 3ecf3281bf3c9bb43b84cee014e3587c, type: 3}
   abilityChargeTime: 0
   abilityCooldownTime: 0
   abilityButtonImg: {fileID: 0}

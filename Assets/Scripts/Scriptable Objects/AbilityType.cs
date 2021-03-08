@@ -8,6 +8,7 @@ public class AbilityType : ScriptableObject
     public bool abilityIsActive;
 
     public GameObject abilityPrefab;
+    public AudioClip soundFx;
 
     public float abilityChargeTime;
     public float abilityCooldownTime;

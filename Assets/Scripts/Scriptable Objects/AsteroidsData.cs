@@ -16,6 +16,7 @@ public class AsteroidsData : ScriptableObject
 
     public IntReference currentWave;
     public ParticleSystem explosionEffect;
+    public AudioClip explosionSfx;
 
     public GameObject[] asteroids;
 }

@@ -17,6 +17,7 @@ public class Asteroid : MonoBehaviour
     private float minVelocity;
     private float maxVelocity;
     private ParticleSystem explosionEffect;
+    private AudioClip explosionSfx;
 
     public AsteroidsData subAsteroids;
 
@@ -39,6 +40,7 @@ public class Asteroid : MonoBehaviour
         minVelocity = asteroidsData.minVelocity;
         maxVelocity = asteroidsData.maxVelocity;
         explosionEffect = asteroidsData.explosionEffect;
+        explosionSfx = asteroidsData.explosionSfx;
 
         // Increase target accuracy every wave
         targetAccuracy -= asteroidsData.currentWave.Value * 0.25f;
@@ -90,6 +92,7 @@ public class Asteroid : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            AudioSource.PlayClipAtPoint(explosionSfx, transform.position);
             Instantiate(explosionEffect, transform.position, transform.rotation);
             asteroidShotEvent.sentInt = scoreValue;
             asteroidShotEvent.Raise();

@@ -15,13 +15,16 @@ public class PlayerController : MonoBehaviour
     private float fireDelay;
 
     private Animator playerAnim;
+    private AudioSource playerAudio;
 
     public GameObject explosionEffect;
+    public AudioClip explosionSfx;
     public GameEvent gameOver;
 
     void Start()
     {
         playerAnim = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
         fireDelay = weapons[selectedWeapon].projectileDelay;
     }
 
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
         if(fireDelay <= 0f)
         {
             playerAnim.speed = 1 / weapons[selectedWeapon].projectileDelay;
+            playerAudio.PlayOneShot(weapons[selectedWeapon].soundFx, 1.0f);
             Instantiate(weapons[selectedWeapon].abilityPrefab, gunEnd.transform.position, transform.rotation);
             fireDelay = weapons[selectedWeapon].projectileDelay;
         }
@@ -92,11 +96,12 @@ public class PlayerController : MonoBehaviour
         return (eventSystem.IsPointerOverGameObject(fingerId) && eventSystem.currentSelectedGameObject != null);
     }
 
-private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
             gameObject.SetActive(false);
+            AudioSource.PlayClipAtPoint(explosionSfx, transform.position, 1.0f);
             Instantiate(explosionEffect, transform.position, transform.rotation);
             gameOver.Raise();
         }
