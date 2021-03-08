@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     public GameObject gunEnd;
-    public int selectedWeapon = 0;
-    public List<LaserType> laserType;
+    public GameObject shield;
 
     public List<AbilityType> abilities;
+    public List<LaserType> weapons;
+    private int selectedWeapon;
 
     private float fireDelay;
 
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         playerAnim = GetComponent<Animator>();
         playerAnim.StopPlayback();
-        fireDelay = laserType[selectedWeapon].fireRate;
+        fireDelay = weapons[selectedWeapon].projectileDelay;
     }
 
     void Update()
@@ -48,6 +49,22 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.SetBool("isFiring", false);
         }
+
+        foreach (AbilityType ability in abilities)
+        {
+            if (!ability.abilityIsActive && ability.abilityName == "Shield")
+            {
+                shield.SetActive(false);
+            }
+
+            if (ability.abilityIsActive && ability.abilityName == "Burst")
+            {
+                selectedWeapon = 1;
+            } else
+            {
+                selectedWeapon = 0;
+            }
+        }
     }
 
     void RotateShip(Vector3 inputPosition)
@@ -61,9 +78,9 @@ public class PlayerController : MonoBehaviour
         fireDelay -= Time.deltaTime;
         if(fireDelay <= 0f)
         {
-            playerAnim.speed = 1 / laserType[selectedWeapon].fireRate;
-            Instantiate(laserType[selectedWeapon].projectile, gunEnd.transform.position, transform.rotation);
-            fireDelay = laserType[selectedWeapon].fireRate;
+            playerAnim.speed = 1 / weapons[selectedWeapon].projectileDelay;
+            Instantiate(weapons[selectedWeapon].abilityPrefab, gunEnd.transform.position, transform.rotation);
+            fireDelay = weapons[selectedWeapon].projectileDelay;
         }
     }
 

@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325224bb959c7124387b8dd1fc49b68b, type: 3}
   m_Name: StandardLaser
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1189876710884237165, guid: dbdb4b7c87e13ea4c9589f3434bbc4bd,
+  abilityName: Laser
+  abilityIsActive: 1
+  abilityPrefab: {fileID: 1189876710884237165, guid: dbdb4b7c87e13ea4c9589f3434bbc4bd,
     type: 3}
-  projectSpeed:
+  abilityChargeTime: 0
+  abilityCooldownTime: 0
+  abilityButtonImg: {fileID: 0}
+  abilityButtonCooldownImg: {fileID: 0}
+  gameEvent: {fileID: 0}
+  abilityBtn: {fileID: 0}
+  projectileVelocity:
     UseConstant: 1
     ConstantValue: 10
     Variable: {fileID: 0}
-  fireRate:
+  projectileDelay:
     UseConstant: 1
     ConstantValue: 0.5
     Variable: {fileID: 0}

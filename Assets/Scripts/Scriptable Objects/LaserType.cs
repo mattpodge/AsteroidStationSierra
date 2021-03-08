@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu (menuName = "Object Data / Laser Type")]
-public class LaserType : ScriptableObject
+public class LaserType : AbilityType
 {
-    public GameObject projectile;
-    public FloatReference projectSpeed;
-    public FloatReference fireRate;
+    public FloatReference projectileVelocity;
+    public FloatReference projectileDelay;
 }
