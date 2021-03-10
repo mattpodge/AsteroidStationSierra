@@ -40,8 +40,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5800159128386361695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed9751b713ee7743a25fbca9b2c75d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 2520a5877e00a7c4b826e6bf9409b49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 7131744453044738677, guid: 905dde0f0a628cd499c7c06a9b55cc66,
-    type: 3}
+  gm: {fileID: 727513979446369604, guid: f90fd099fff2cfe4bb6ba93677f5a739, type: 3}
+  spawnPoints: []
+  asteroidsPrefab: []
+  asteroidCount: 0
+  asteroidsActive: 0
+  nextWave: 0
+  maxAsteroids: 0

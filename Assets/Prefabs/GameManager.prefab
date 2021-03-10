@@ -40,9 +40,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5523227563542857612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 477030f6ec991794cbe62c36cf805978, type: 3}
+  m_Script: {fileID: 11500000, guid: a7271f242d024474dae67d4df7e0603b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScore: 0
+  asteroidsDestroyed: 0
+  currentWave: 0
+  isGameActive: 0
+  highScore: 0
+  prevHighScore: 0
   scoreText: {fileID: 0}
-  gameOverText: {fileID: 0}
-  restartButton: {fileID: 0}
+  waveText: {fileID: 0}
+  hiScoreText: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  powerUpsUI: {fileID: 0}

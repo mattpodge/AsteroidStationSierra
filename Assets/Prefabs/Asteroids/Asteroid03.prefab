@@ -102,7 +102,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: cd43e278a5b0dbd41889bc2c59be6031, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -153,12 +153,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4145662059846287799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91207db7892ef0241af14829f34770a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3efc80cf40407a74a9ce53577e61d2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
     type: 3}
-  explosionSound: {fileID: 8300000, guid: c6cbdf23ed620ac4bb7ef4f984c5da67, type: 3}
+  explosionSound: {fileID: 8300000, guid: d57d610ab8601ef4e93d9017982beca6, type: 3}
 --- !u!82 &-3131137911271464395
 AudioSource:
   m_ObjectHideFlags: 0

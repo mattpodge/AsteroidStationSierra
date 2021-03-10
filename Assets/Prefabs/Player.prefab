@@ -274,10 +274,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9138112596816812013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2ebbcb834163046aea3fdc58daf231, type: 3}
+  m_Script: {fileID: 11500000, guid: b6a790c476a62ad47923f98470a1bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserFire: {fileID: 1189876710884237165, guid: 5f6b3f4131c3e9d448cab97278537480,
+  laserFire: {fileID: 1189876710884237165, guid: 5406c9cc3d563534784308b10ca8f3e2,
     type: 3}
   laserFireRate: 0.5
   burstFire: {fileID: 4511452462155951346, guid: 3ca5a3d743870664fafe5283bb30e533,
@@ -286,9 +286,9 @@ MonoBehaviour:
   gunSpawn: {fileID: 4813798825526892726}
   explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
     type: 3}
-  laserSound: {fileID: 8300000, guid: b2d73faddcc71ab45b4e0fe4800a5667, type: 3}
-  burstSound: {fileID: 8300000, guid: 1933ef9560eefd04396f566d62f4f149, type: 3}
-  explosionSound: {fileID: 8300000, guid: d8945ca0c971c9643b532346ac1a5c74, type: 3}
+  laserSound: {fileID: 8300000, guid: 1c7be36113becca41ab6c131bb2f29bc, type: 3}
+  burstSound: {fileID: 8300000, guid: 62b804adf4490f246aff4e69761f8250, type: 3}
+  explosionSound: {fileID: 8300000, guid: 132874fd41502d947841444394d5ca31, type: 3}
 --- !u!82 &7076888392994065547
 AudioSource:
   m_ObjectHideFlags: 0
