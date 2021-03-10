@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,13 @@ public class GameManager : MonoBehaviour
 
     public void OnGameOver()
     {
-        gameOverScreen.SetActive(true);
+        StartCoroutine(QuickDelay(1f));
         isGameActive.SetValue(false);
+    }
+
+    IEnumerator QuickDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameOverScreen.SetActive(true);
     }
 }

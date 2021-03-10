@@ -17,6 +17,9 @@ public class AbilitiesManager : MonoBehaviour
 
         foreach (AbilityType ability in abilities)
         {
+
+            ability.abilityIsActive = false;
+
             int yPos = -100 - (i * 250);
 
             GameObject abilityButton = Instantiate(buttonPrefab);

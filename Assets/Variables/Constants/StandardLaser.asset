@@ -25,7 +25,7 @@ MonoBehaviour:
   abilityBtn: {fileID: 0}
   projectileVelocity:
     UseConstant: 1
-    ConstantValue: 10
+    ConstantValue: 15
     Variable: {fileID: 0}
   projectileDelay:
     UseConstant: 1
