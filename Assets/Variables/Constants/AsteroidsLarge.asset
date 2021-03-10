@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877530b4d12fc1840bbfbea2922e66aa, type: 3}
+  m_Name: AsteroidsLarge
+  m_EditorClassIdentifier: 
+  scoreValue: 10
+  targetsPlayer: 1
+  targetAccuracy: 8
+  rotationRange: 180
+  minVelocity: 1
+  maxVelocity: 2.5
+  currentWave:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 42cb70105bad03b4787fdec6b0377af8, type: 2}
+  explosionEffect: {fileID: 762075597039494251, guid: 1237a7e25c6adcb4ba597528f5879f3a,
+    type: 3}
+  explosionSfx: {fileID: 8300000, guid: 08b38a955393f6a4e9f3c5d953a7a3d9, type: 3}
+  asteroids:
+  - {fileID: 1940102883881821776, guid: 5a08d24d659e78a4badde7882eea2ac7, type: 3}
+  - {fileID: 2011541562826813555, guid: db2621a59ef3c2c488835f2a408bde2e, type: 3}
+  - {fileID: 4786260862699870409, guid: a47aab67debfba54e9e1edfce5a5eacd, type: 3}
+  - {fileID: 1298615718832608192, guid: 0ef897a16d74c2241a7905c028191208, type: 3}

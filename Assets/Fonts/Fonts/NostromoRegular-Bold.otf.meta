@@ -1,2 +1,25 @@
 fileFormatVersion: 2
 guid: 96f4173349561c64fbb6235b8c5c5658
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nostromo Regular
+  fontNames:
+  - Nostromo Regular
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 753be2012de737c48be8139ddacf367a, type: 3}
+  - {fileID: 12800000, guid: a1c511573360193478f6f8c9196ea146, type: 3}
+  - {fileID: 12800000, guid: 60bf5caba3a25a346be0584d816851a5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
