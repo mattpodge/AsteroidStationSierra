@@ -251,8 +251,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Matt/.android/user.keystore
-  AndroidKeyaliasName: asteroidstationsierra
+  AndroidKeystoreName: '{dedicated}: .android/user.keystore'
+  AndroidKeyaliasName: asteroid_station_sierra
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
